@@ -23,8 +23,7 @@ app.use(express.static(path.join(__dirname, 'app')));
 app.use(cors());
 
 app.get('/*', function (req, res) {
-  res.header("Access-Control-Allow-Origin", "*");   //设置跨域访问
-  res.sendFile(__dirname + '/app/index.html');
+    res.sendFile(__dirname + '/app/index.html');
 });
 
 // catch 404 and forward to error handler
