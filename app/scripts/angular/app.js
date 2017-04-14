@@ -1,19 +1,23 @@
-var app = angular.module('app', ['ngRoute']);
+var app = angular.module('app', ['ui.router']);
 
-app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-    $routeProvider
-        .when('/', {
-            templateUrl: '/views/tpl/welcome.html', 
+app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    $urlRouterProvider.otherwise('/');
+    $stateProvider
+        .state('welcome',{
+            url:'/',
+            templateUrl: '/views/tpl/welcome.html',
             controller: 'WelcomeCtrl'
         })
-        .when('/signup',{
-            templateUrl: '/views/tpl/signup.html', 
+        .state('signup',{
+            url:'/signup',
+            templateUrl: '/views/tpl/signup.html',
             controller: 'SignupCtrl'
         })
-        .when('/login',{
-            templateUrl: '/views/tpl/login.html', 
+        .state('login',{
+            url:'/login',
+            templateUrl: '/views/tpl/login.html',
             controller: 'LoginCtrl'
-        })
-        .otherwise({redirectTo: '/'});
+        });
+
     $locationProvider.html5Mode(true);
-}]);
+});

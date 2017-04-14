@@ -1,10 +1,10 @@
-app.controller('SignupCtrl', function ($scope, $http, $timeout) {
+app.controller('SignupCtrl', function ($scope, $http, $timeout, $location) {
 
     $scope.signup = function (isValid, signupInfo) {
         $scope.submitted = true;
-        if(isValid){
+        if (isValid) {
             console.log(signupInfo);
-            signupInfo.password = md5(signupInfo.password);
+            signupInfo.password = md5(md5(signupInfo.password) + signupInfo.account);
 
             var url = 'http://localhost:8181/user/saving';
             $http.post(url, signupInfo).then(function (data) {
@@ -13,13 +13,14 @@ app.controller('SignupCtrl', function ($scope, $http, $timeout) {
                     //TODO
                     $scope.init();
                     alert("Signup Succeed");
+                    $location.path("/login");
                 } else {
                     $scope.init();
                     alert("Signup Failed");
                 }
             })
         }
-        
+
     }
 
     $scope.init = function () {

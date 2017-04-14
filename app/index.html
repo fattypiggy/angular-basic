@@ -13,25 +13,25 @@
 
     <div class="container">
         <h2 class="text-primary">
-            <a href="/signup">Demo </a>
+            <a ui-sref="signup">Demo </a>
         </h2>
         <p>A simple demo</p>
 
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
-                <div ng-view></div>
+                <ui-view></ui-view>
             </div>
         </div>
     </div>
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/">Demo</a>
+                <a class="navbar-brand" ui-sref="welcome">Welcome</a>
             </div>
             <p class="navbar-text navbar-right">
-                <a class="navbar-link" href="/signup">注册</a>
+                <a class="navbar-link" ui-sref="signup">注册</a>
                 <span> &nbsp;|&nbsp;</span>
-                <a class="navbar-link" href="/login">登录</a>
+                <a class="navbar-link" ui-sref="login">登录</a>
             </p>
         </div>
     </nav>
@@ -39,8 +39,10 @@
     
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+
     <script src="scripts/angular/app.js"></script>
     <script src="scripts/angular/Controllers/WelcomeCtrl.js"></script>
     <script src="scripts/angular/Controllers/LoginCtrl.js"></script>
