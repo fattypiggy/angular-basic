@@ -1,26 +1,23 @@
-<div class="form-horizontal" ng-init="init()">
-    <form name="loginForm" ng-submit="login(loginInfo)">
-        <div class="form-group">
-            <label class="col-sm-2 control-label">账号</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" ng-model="loginInfo.account" name="" placeholder="账号">
-            </div>
+<div class="form-horizontal" ng-init="init()" novalidate>
+    <div class="page-header">
+        <h1>Login in</h1>
+    </div>
+    <form name="loginForm" ng-submit="login(loginForm.$valid,loginInfo)" novalidate>
+        <div class="form-group" ng-class="{ 'has-error' : loginForm.account.$invalid && submitted}">
+            <label>账号</label>
+            <input type="text" class="form-control" ng-model="loginInfo.account" name="account" ng-keyup="validate()" placeholder="账号"
+                required>
+            <p ng-show="loginForm.account.$invalid && submitted" class="help-block">You account is required.</p>
+        </div>
+
+        <div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && submitted}">
+            <label>密码</label>
+            <input type="password " class="form-control " ng-model="loginInfo.password " name="password" placeholder="密码" required>
+            <p ng-show="loginForm.password.$invalid && submitted" class="help-block">You account is required.</p>
         </div>
 
         <div class="form-group">
-            <label class="col-sm-2 control-label">密码</label>
-            <div class="col-sm-4">
-                <input type="password" class="form-control" ng-model="loginInfo.password" name="" placeholder="密码">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-sm-2">
-
-            </div>
-            <div class="col-sm-4">
-                <button class="btn btn-primary" type="submit">登录</button>
-            </div>
+            <button class="btn btn-primary" type="submit">登录</button>
         </div>
         <form>
 </div>

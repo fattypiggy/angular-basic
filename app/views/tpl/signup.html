@@ -1,51 +1,28 @@
 <div class="form-horizontal" ng-init="init()">
-    <form name="loginForm" ng-submit="signup(signupInfo)">
-        <div class="form-group">
-            <label class="col-sm-4 col-lg-2 control-label">姓名</label>
-            <div class="col-lg-4 col-sm-8">
-                <input type="text" class="form-control" ng-model="signupInfo.name" name="" placeholder="姓名">
-            </div>
+    <div class="page-header">
+        <h1>Sign up</h1>
+    </div>
+    <form name="signupForm" ng-submit="signup(signupForm.$valid,signupInfo)" novalidate>
+        <div class="form-group" ng-class="{ 'has-error' : signupForm.name.$invalid && !signupForm.name.$pristine && submitted}">
+            <label>姓名</label>
+            <input type="text" class="form-control" ng-model="signupInfo.name" name="name" placeholder="姓名" required>
+            <p ng-show="signupForm.name.$invalid && !signupForm.name.$pristine && submitted" class="help-block">You name is required.</p>
         </div>
-        <div class="form-group">
-            <label class="col-sm-2 control-label">账号</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" ng-model="signupInfo.account" id="account" ng-keyup="validate()" placeholder="账号">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="col-sm-2 control-label">密码</label>
-            <div class="col-sm-4">
-                <input type="password" class="form-control" ng-model="signupInfo.password" name="" placeholder="密码">
-            </div>
+        <div class="form-group" ng-class="{ 'has-error' : signupForm.account.$invalid && !signupForm.account.$pristine && submitted}">
+            <label>账号</label>
+            <input type="text" class="form-control" ng-model="signupInfo.account" name="account" ng-keyup="validate()" placeholder="账号"
+                required>
+            <p ng-show="signupForm.account.$invalid && !signupForm.account.$pristine && submitted" class="help-block">You account is required.</p>
         </div>
 
-        <div class="form-group">
-            <div class="col-sm-2">
+        <div class="form-group" ng-class="{ 'has-error' : signupForm.password.$invalid && !signupForm.password.$pristine && submitted}">
+            <label>密码</label>
+            <input type="password " class="form-control " ng-model="signupInfo.password " name="password" placeholder="密码" required>
+            <p ng-show="signupForm.password.$invalid && !signupForm.password.$pristine && submitted" class="help-block">You account is required.</p>
+        </div>
 
-            </div>
-            <div class="col-sm-4">
-                <button class="btn btn-primary" type="submit">注册</button>
-            </div>
+        <div class="form-group ">
+            <button class="btn btn-primary" type="submit">注册</button>
         </div>
         <form>
 </div>
-<!--<script>
-    var times;
-    $('#account').keyup(function(){
-        try{
-            clearTimeout(times);
-        }catch(e){};
-        times = setTimeout("fun()",3000);
-    }).blur(function(){
-        try{
-			clearTimeout(times);
-		}catch(e){};
-        if($('#account').val() !== ""){
-            fun();
-        }
-    });
-    function fun(){
-        console.log("3s");
-    }
-</script>-->
