@@ -4,50 +4,74 @@
 <head>
     <base href="/">
     <meta charset="utf-8">
-    <title>Angular-basic</title>
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/main.css">
+    <title>Angular-material</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+    <!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">-->
 </head>
 
-<body ng-app="app">
+<body>
+<div ng-controller="AppCtrl" layout="column" style="height: 500px;" ng-cloak="" class="sidenavdemoCustomSidenav"
+     ng-app="MyApp">
 
-    <div class="container">
-        <h2 class="text-primary">
-            <a ui-sref="signup">Demo </a>
-        </h2>
-        <p>A simple demo</p>
+    <section layout="row" flex="">
 
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-                <ui-view></ui-view>
+        <md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop="" md-whiteframe="4">
+
+            <md-toolbar class="md-theme-indigo">
+                <h1 class="md-toolbar-tools">Disabled Backdrop</h1>
+            </md-toolbar>
+
+            <md-content layout-margin="">
+                <p>
+                    This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.
+                </p>
+                <md-button ng-click="toggleLeft()" class="md-accent">
+                    Close this Sidenav
+                </md-button>
+            </md-content>
+
+        </md-sidenav>
+
+        <md-content flex="" layout-padding="">
+
+            <div layout="column" layout-align="top center">
+                <p>
+                    Developers can also disable the backdrop of the sidenav.<br>
+                    This will disable the functionality to click outside to close the sidenav.
+                </p>
+
+                <div>
+                    <md-button ng-click="toggleLeft()" class="md-raised">
+                        Toggle Sidenav
+                    </md-button>
+                </div>
+
             </div>
-        </div>
-    </div>
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" ui-sref="welcome">Welcome</a>
-            </div>
-            <p class="navbar-text navbar-right">
-                <a class="navbar-link" ui-sref="signup">注册</a>
-                <span> &nbsp;|&nbsp;</span>
-                <a class="navbar-link" ui-sref="login">登录</a>
-            </p>
-        </div>
-    </nav>
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 
+        </md-content>
 
-    <script src="scripts/angular/app.js"></script>
-    <script src="scripts/angular/Controllers/WelcomeCtrl.js"></script>
-    <script src="scripts/angular/Controllers/LoginCtrl.js"></script>
-    <script src="scripts/angular/Controllers/SignupCtrl.js"></script>
+    </section>
 
-    <script src="bower_components/js-md5/src/md5.js"></script>
+</div>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+<script src="bower_components/angular/angular.min.js"></script>
+
+<script src="bower_components/angular-aria/angular-aria.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/angular-material/angular-material.min.js"></script>
+<!--<script src="bower_components/angular-route/angular-route.min.js"></script>-->
+<!--<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<!--<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>-->
+
+<script src="scripts/angular/app_md.js"></script>
+<script src="scripts/angular/app.js"></script>
+<script src="scripts/angular/Controllers/WelcomeCtrl.js"></script>
+<script src="scripts/angular/Controllers/LoginCtrl.js"></script>
+<script src="scripts/angular/Controllers/SignupCtrl.js"></script>
+
+<script src="bower_components/js-md5/src/md5.js"></script>
 </body>
 </html>
