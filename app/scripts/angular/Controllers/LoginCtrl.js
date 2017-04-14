@@ -9,13 +9,10 @@ app.controller('LoginCtrl', function ($scope, $http, $location) {
             $http.post(url, loginInfo).then(function (data) {
                 console.log(data);
                 if (data.data.msg === "success") {
-                    //TODO
-                    alert("Login Succeed");
                     $scope.init();
                     $location.path("/");
                 } else {
-                    alert("Login Failed");
-                    $scope.init();
+                    $scope.loginError = true;
                 }
             })
         }  
@@ -23,5 +20,7 @@ app.controller('LoginCtrl', function ($scope, $http, $location) {
 
     $scope.init= function(){
         $scope.loginInfo = {};
+        $scope.submitted = false;
+        $scope.loginError = false;
     }
 });

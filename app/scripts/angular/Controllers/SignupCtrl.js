@@ -12,33 +12,36 @@ app.controller('SignupCtrl', function ($scope, $http, $timeout, $location) {
                 if (data.data.msg === "success") {
                     //TODO
                     $scope.init();
-                    alert("Signup Succeed");
                     $location.path("/login");
                 } else {
                     $scope.init();
-                    alert("Signup Failed");
                 }
             })
         }
 
-    }
+    };
 
     $scope.init = function () {
+        //$scope.isValidAccount = true;
+        $scope.submitted = false;
         $scope.signupInfo = {};
-    }
+    };
 
-    $scope.validate = function () {
+    $scope.validate = function (account) {
         $timeout.cancel($scope.time);
-
-        $scope.time = $timeout(function () {
-            var url = 'http://localhost:8181/user/';
-            $http.get(url + $scope.signupInfo.account + '/verification').then(function (data) {
-                if (data.data.msg === "valid") {
-                    console.log(data.data.msg);
-                } else {
-                    console.log(data.data.msg);
-                }
-            });
-        }, 3000);
-    }
+        if ($scope.signupInfo.account !== undefined) {
+            $scope.time = $timeout(function () {
+                var url = 'http://localhost:8181/user/';
+                $http.get(url + account + '/verification').then(function (data) {
+                    if (data.data.msg === "valid") {
+                        $scope.isValidAccount = true;
+                        console.log(data.data.msg);
+                    } else {
+                        $scope.isValidAccount = false;
+                        console.log(data.data.msg);
+                    }
+                });
+            }, 3000);
+        }
+    };
 });

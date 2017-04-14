@@ -10,10 +10,11 @@
             <p ng-show="loginForm.account.$invalid && submitted" class="help-block">You account is required.</p>
         </div>
 
-        <div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && submitted}">
+        <div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && submitted || loginError}">
             <label>密码</label>
             <input type="password" class="form-control " ng-model="loginInfo.password " name="password" placeholder="密码" required>
-            <p ng-show="loginForm.password.$invalid && submitted" class="help-block">You account is required.</p>
+            <p ng-show="loginForm.password.$invalid && submitted" class="help-block">You password is required.</p>
+            <p ng-show="loginError" class="help-block">Wrong account or password.</p>
         </div>
 
         <div class="form-group">
