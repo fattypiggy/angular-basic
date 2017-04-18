@@ -1,4 +1,4 @@
-app.controller('LoginCtrl', function ($scope, $http, $location, $state, $stateParams) {
+app.controller('LoginCtrl', function ($scope, $http, $location, $state, $stateParams, $cookies) {
 
     $scope.init= function(){
         $scope.loginInfo = {};
@@ -19,11 +19,14 @@ app.controller('LoginCtrl', function ($scope, $http, $location, $state, $statePa
                 if (data.data.result === true) {
                     var name = data.data.data.name;
                     $scope.init();
+                    $cookies.putObject("user",data.data);
+
                     $state.go('welcome',{
                         args:{
                             name:name
                         }
                     });
+
                 } else {
                     $scope.loginError = true;
                 }
