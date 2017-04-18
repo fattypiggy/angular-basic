@@ -7,24 +7,29 @@
             <label>账号</label>
             <input type="text" class="form-control" ng-model="loginInfo.account" name="account" ng-keyup="validate()" placeholder="账号"
                 required>
-            <p ng-show="loginForm.account.$invalid && submitted" class="help-block">You account is required.</p>
+            <div class="alert alert-danger" role="alert" ng-show="loginForm.account.$invalid && submitted">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span> Your account is required.
+            </div>
         </div>
-
         <div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && submitted || loginError}">
             <label>密码</label>
             <input type="password" class="form-control " ng-model="loginInfo.password " name="password" placeholder="密码" required>
-            <p ng-show="loginForm.password.$invalid && submitted" class="help-block">You password is required.</p>
-            <p ng-show="loginError" class="help-block">Wrong account or password.</p>
+            <div class="alert alert-danger" role="alert" ng-show="loginForm.password.$invalid && submitted">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span> Your password is required.
+            </div>
+            <div class="alert alert-danger" role="alert" ng-show="loginError">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span> Wrong account or password.
+            </div>
         </div>
-
         <div class="form-group">
             <button class="btn btn-primary" type="submit">登录</button>
             <button class="btn btn-default" type="button" data-toggle="modal" data-target="#oauthLogin">第三方登录</button>
         </div>
         <form>
 </div>
-
-
 <div class="modal fade" tabindex="-1" role="dialog" id="oauthLogin">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -39,12 +44,11 @@
                         <input type="text" class="form-control" ng-model="oauthLoginInfo.account" name="account" ng-keyup="validate()" placeholder="账号"
                             required>
                     </div>
-
                     <div class="form-group">
                         <label>密码</label>
                         <input type="password" class="form-control " ng-model="oauthLoginInfo.password " name="password" placeholder="密码" required>
                     </div>
-                <form>
+                    <form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

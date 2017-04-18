@@ -11,23 +11,29 @@
                     <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="signupForm.name.$valid"></span>
                 </div>
             </div>
-            <p ng-show="signupForm.name.$invalid && submitted" class="help-block">Your name is required.</p>
+            <div class="alert alert-danger" role="alert" ng-show="signupForm.name.$invalid && submitted">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span> Your name is required.
+            </div>
         </div>
-
         <div class="form-group has-feedback" ng-class="{ 'has-error' : (signupForm.account.$invalid && submitted) ||(!isValidAccount), 'has-success':isValidAccount && checked}">
             <label>账号</label>
             <div class="has-feedback">
                 <div>
                     <input type="text" class="form-control" ng-model="signupInfo.account" name="account" ng-keyup="validate(signupInfo.account)"
-                    placeholder="账号" required>
+                        placeholder="账号" required>
                     <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="isValidAccount && checked"></span>
                 </div>
             </div>
-
-            <p ng-show="signupForm.account.$invalid  && submitted" class="help-block">Your account is required.</p>
-            <p ng-show="!isValidAccount" class="help-block">This account has been registered.</p>
+            <div class="alert alert-danger" role="alert" ng-show="signupForm.account.$invalid  && submitted">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span> Your account is required.
+            </div>
+            <div class="alert alert-danger" role="alert" ng-show="!isValidAccount">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span> This account has been registered.
+            </div>
         </div>
-
         <div class="form-group" ng-class="{ 'has-error' : signupForm.password.$invalid && submitted}">
             <label>密码</label>
             <div class="has-feedback">
@@ -35,9 +41,11 @@
                     <input type="password" class="form-control" ng-model="signupInfo.password " name="password" placeholder="密码" required>
                 </div>
             </div>
-            <p ng-show="signupForm.password.$invalid && submitted" class="help-block">Your password is required.</p>
+            <div class="alert alert-danger" role="alert" ng-show="signupForm.password.$invalid && submitted">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span> Your password is required.
+            </div>
         </div>
-
         <div class="form-group ">
             <button class="btn btn-primary" type="submit">注册</button>
         </div>
