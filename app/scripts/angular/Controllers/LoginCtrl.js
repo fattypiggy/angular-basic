@@ -4,6 +4,7 @@ app.controller('LoginCtrl', function ($scope, $http, $location, $state, $statePa
         $scope.loginInfo = {};
         $scope.submitted = false;
         $scope.loginError = false;
+        $scope.loginInfo.account = $stateParams.args.account;
     };
     
     $scope.login = function (isValid,loginInfo) {
@@ -11,14 +12,13 @@ app.controller('LoginCtrl', function ($scope, $http, $location, $state, $statePa
         if(isValid){
             console.log(loginInfo);
             var url = 'http://localhost:7788/verification';
+            
             loginInfo.password = md5(md5(loginInfo.password) + loginInfo.account);
             $http.post(url, loginInfo).then(function (data) {
                 console.log(data);
                 if (data.data.result === true) {
                     var name = data.data.data.name;
                     $scope.init();
-
-                    //$location.path("/");
                     $state.go('welcome',{
                         args:{
                             name:name

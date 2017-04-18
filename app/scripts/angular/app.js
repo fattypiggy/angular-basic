@@ -19,7 +19,10 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
         .state('login',{
             url:'/login',
             templateUrl: '/views/tpl/login.html',
-            controller: 'LoginCtrl'
+            controller: 'LoginCtrl',
+            params:{
+                args:{}
+            }
         });
 
     $locationProvider.html5Mode(true);

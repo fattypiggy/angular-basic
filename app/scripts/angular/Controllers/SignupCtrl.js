@@ -4,6 +4,7 @@ app.controller('SignupCtrl', function ($scope, $http, $timeout, $state, $locatio
         $scope.submitted = true;
         if (isValid && $scope.checked) {
             console.log(signupInfo);
+            
             signupInfo.password = md5(md5(signupInfo.password) + signupInfo.account);
 
             var url = 'http://localhost:7788/signup';
@@ -13,7 +14,11 @@ app.controller('SignupCtrl', function ($scope, $http, $timeout, $state, $locatio
                     var account = $scope.signupInfo.account;
                     $scope.init();
 
-                    $state.go('login');
+                    $state.go('login',{
+                        args:{
+                            account:account
+                        }
+                    });
                 } else {
                     $scope.init();
                 }
