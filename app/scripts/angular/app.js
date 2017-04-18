@@ -6,7 +6,10 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
         .state('welcome',{
             url:'/',
             templateUrl: '/views/tpl/welcome.html',
-            controller: 'WelcomeCtrl'
+            controller: 'WelcomeCtrl',
+            params:{
+                args:{}
+            }
         })
         .state('signup',{
             url:'/signup',

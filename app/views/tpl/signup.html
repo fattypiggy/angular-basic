@@ -2,25 +2,40 @@
     <div class="page-header">
         <h1>Sign up</h1>
     </div>
-    <form name="signupForm" ng-submit="signup(signupForm.$valid,signupInfo)" novalidate>
+    <form role="form" name="signupForm" ng-submit="signup(signupForm.$valid,signupInfo)" novalidate>
         <div class="form-group" ng-class="{ 'has-error' : signupForm.name.$invalid && submitted}">
             <label>姓名</label>
-            <input type="text" class="form-control" ng-model="signupInfo.name" name="name" placeholder="姓名" required>
-            <p ng-show="signupForm.name.$invalid && submitted" class="help-block">You name is required.</p>
+            <div class="has-feedback">
+                <div>
+                    <input type="text" class="form-control" ng-model="signupInfo.name" name="name" placeholder="姓名" required>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="signupForm.name.$valid"></span>
+                </div>
+            </div>
+            <p ng-show="signupForm.name.$invalid && submitted" class="help-block">Your name is required.</p>
         </div>
 
-        <div class="form-group" ng-class="{ 'has-error' : signupForm.account.$invalid && submitted}">
+        <div class="form-group has-feedback" ng-class="{ 'has-error' : (signupForm.account.$invalid && submitted) ||(!isValidAccount), 'has-success':isValidAccount && checked}">
             <label>账号</label>
-            <input type="text" class="form-control" ng-model="signupInfo.account" name="account" ng-keyup="validate(signupInfo.account)" placeholder="账号"
-                required>
-            <p ng-show="signupForm.account.$invalid  && submitted" class="help-block">You account is required.</p>
-            <p ng-show="!isValidAccount && !signupForm.account.$pristine" class="help-block">This account has been registered.</p>
+            <div class="has-feedback">
+                <div>
+                    <input type="text" class="form-control" ng-model="signupInfo.account" name="account" ng-keyup="validate(signupInfo.account)"
+                    placeholder="账号" required>
+                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="isValidAccount && checked"></span>
+                </div>
+            </div>
+
+            <p ng-show="signupForm.account.$invalid  && submitted" class="help-block">Your account is required.</p>
+            <p ng-show="!isValidAccount" class="help-block">This account has been registered.</p>
         </div>
 
         <div class="form-group" ng-class="{ 'has-error' : signupForm.password.$invalid && submitted}">
             <label>密码</label>
-            <input type="password" class="form-control" ng-model="signupInfo.password " name="password" placeholder="密码" required>
-            <p ng-show="signupForm.password.$invalid && submitted" class="help-block">You account is required.</p>
+            <div class="has-feedback">
+                <div>
+                    <input type="password" class="form-control" ng-model="signupInfo.password " name="password" placeholder="密码" required>
+                </div>
+            </div>
+            <p ng-show="signupForm.password.$invalid && submitted" class="help-block">Your password is required.</p>
         </div>
 
         <div class="form-group ">

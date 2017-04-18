@@ -1,3 +1,3 @@
-app.controller('WelcomeCtrl',function($scope){
-    $scope.username = 'William Jing';
+app.controller('WelcomeCtrl',function($scope, $state, $stateParams){
+    $scope.username = $stateParams.args.name;
 });
