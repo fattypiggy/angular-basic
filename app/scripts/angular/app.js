@@ -23,6 +23,11 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
             params:{
                 args:{}
             }
+        })
+        .state('allUsers',{
+            url:'/allUsers',
+            templateUrl: '/views/tpl/userList.html',
+            controller: 'UserCtrl'
         });
 
     $locationProvider.html5Mode(true);

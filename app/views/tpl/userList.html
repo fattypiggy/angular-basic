@@ -1,0 +1,22 @@
+<div class="panel panel-default" ng-init="init()">
+  <!-- Default panel contents -->
+  <div class="panel-heading">All Users</div>
+
+  <!-- Table -->
+  <table class="table">
+      <thead>
+          <th>#</th>
+          <th>Name</th>
+          <th>Account</th>
+          <th></th>
+      </thead>
+      <tbody ng-repeat="user in users">
+          <td>{{user.id}}</td>
+          <td>{{user.name}}</td>
+          <td>{{user.account}}</td>
+          <td>
+              <button class="btn btn-danger" ng-click="removeUser(user)">Delete</button>
+          </td>
+      </tbody>
+  </table>
+</div>
