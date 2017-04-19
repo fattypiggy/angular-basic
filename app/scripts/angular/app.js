@@ -1,31 +1,31 @@
-var app = angular.module('app', ['ui.router','ngCookies']);
+var app = angular.module('app', ['ui.router', 'ngCookies', 'ui.bootstrap']);
 
 app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/');
     $stateProvider
-        .state('welcome',{
-            url:'/',
+        .state('welcome', {
+            url: '/',
             templateUrl: '/views/tpl/welcome.html',
             controller: 'WelcomeCtrl',
-            params:{
-                args:{}
+            params: {
+                args: {}
             }
         })
-        .state('signup',{
-            url:'/signup',
+        .state('signup', {
+            url: '/signup',
             templateUrl: '/views/tpl/signup.html',
             controller: 'SignupCtrl'
         })
-        .state('login',{
-            url:'/login',
+        .state('login', {
+            url: '/login',
             templateUrl: '/views/tpl/login.html',
             controller: 'LoginCtrl',
-            params:{
-                args:{}
+            params: {
+                args: {}
             }
         })
-        .state('allUsers',{
-            url:'/allUsers',
+        .state('allUsers', {
+            url: '/allUsers',
             templateUrl: '/views/tpl/userList.html',
             controller: 'UserCtrl'
         });

@@ -1,22 +1,23 @@
 <div class="panel panel-default" ng-init="init()">
-  <!-- Default panel contents -->
-  <div class="panel-heading">All Users</div>
-
-  <!-- Table -->
-  <table class="table">
-      <thead>
-          <th>#</th>
-          <th>Name</th>
-          <th>Account</th>
-          <th></th>
-      </thead>
-      <tbody ng-repeat="user in users">
-          <td>{{user.id}}</td>
-          <td>{{user.name}}</td>
-          <td>{{user.account}}</td>
-          <td>
-              <button class="btn btn-danger" ng-click="removeUser(user)">Delete</button>
-          </td>
-      </tbody>
-  </table>
+    <!-- Default panel contents -->
+    <div class="panel-heading">All Users</div>
+    <!-- Table -->
+    <table class="table table-hover">
+        <thead>
+            <th>#</th>
+            <th>Name</th>
+            <th>Account</th>
+            <th></th>
+        </thead>
+        <tbody ng-repeat="user in filteredUser">
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.account}}</td>
+            <td>
+                <button class="btn btn-danger" ng-click="removeUser(user)">Delete</button>
+            </td>
+        </tbody>
+    </table>
 </div>
+<ul uib-pagination total-items="users.length" ng-model="currentPage" ng-change="setPagingData(currentPage)" items-per-page="itemsPerPage" class="pagination-md" boundary-links="true"
+    force-ellipses="true"></ul>
