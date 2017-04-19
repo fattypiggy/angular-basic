@@ -31,7 +31,7 @@
         <form>
 </div>
 <div class="modal fade" tabindex="-1" role="dialog" id="oauthLogin">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog form-signin" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -40,19 +40,19 @@
             <div class="modal-body">
                 <form name="oauthLoginForm">
                     <div class="form-group">
-                        <label>账号</label>
+                        <!--<label>账号</label>-->
                         <input type="text" class="form-control" ng-model="oauthLoginInfo.account" name="account" ng-keyup="validate()" placeholder="账号"
                             required>
                     </div>
                     <div class="form-group">
-                        <label>密码</label>
+                        <!--<label>密码</label>-->
                         <input type="password" class="form-control " ng-model="oauthLoginInfo.password " name="password" placeholder="密码" required>
                     </div>
                     <form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-click="oauth(oauthLoginInfo)">Login</button>
+                <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                <button type="button" class="btn btn-lg btn-primary btn-block" ng-click="oauth(oauthLoginInfo)">Login</button>
             </div>
         </div>
         <!-- /.modal-content -->
