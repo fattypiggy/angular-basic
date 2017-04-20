@@ -9,7 +9,7 @@
             <th>Account</th>
             <th></th>
         </thead>
-        <tbody ng-repeat="user in filteredUser">
+        <tbody ng-repeat="user in users">
             <td>{{user.id}}</td>
             <td>{{user.name}}</td>
             <td>{{user.account}}</td>
@@ -19,5 +19,5 @@
         </tbody>
     </table>
 </div>
-<ul uib-pagination total-items="users.length" ng-model="currentPage" ng-change="setPagingData(currentPage)" items-per-page="itemsPerPage" class="pagination-md" boundary-links="true"
+<ul uib-pagination total-items="10" ng-model="currentPage" ng-change="setPagingData(currentPage)" items-per-page="itemsPerPage" class="pagination-md" boundary-links="true"
     force-ellipses="true"></ul>

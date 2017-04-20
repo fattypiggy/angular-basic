@@ -3,27 +3,33 @@ app.controller('UserCtrl', function ($scope, $http, $timeout, $state, $location,
         $scope.currentPage = 1;
         $scope.itemsPerPage = 5;
         $scope.users = [];
-        var getAllURL = 'http://localhost:8181/user/getAll';
-        $http.get(getAllURL).then(function (result) {
-            $scope.users = result.data;
-            $scope.setPagingData($scope.currentPage);
-        })
+        $scope.setPagingData(1);
+        // var getAllURL = 'http://localhost:7788/getAll?page='+($scope.currentPage-1)+"&size=5";
+        // $http.get(getAllURL).then(function (result) {
+        //     $scope.users = result.data;
+        //     //$scope.setPagingData($scope.currentPage);
+        // })
     }
 
     $scope.removeUser = function (user) {
         var removeURL = 'http://localhost:8181/user/delete';
         console.log(user);
-        $http.post(removeURL,user).then(function(result){
+        $http.post(removeURL, user).then(function (result) {
             console.log(result);
             $scope.init();
         })
     }
-
     $scope.setPagingData = function (page) {
-        var pagedData = $scope.users.slice(
-            (page - 1) * $scope.itemsPerPage,
-            page * $scope.itemsPerPage
-        );
-        $scope.filteredUser = pagedData;
+        var getAllURL = 'http://localhost:8181/user/getAll?page=' + (page - 1) + "&size=5";
+        $http.get(getAllURL).then(function (result, status, headers, config) {
+                $scope.users = result.data;
+                console.log(result);
+                //$scope.setPagingData($scope.currentPage);
+            })
+            // var pagedData = $scope.users.slice(
+            //     (page - 1) * $scope.itemsPerPage,
+            //     page * $scope.itemsPerPage
+            // );
+            // $scope.filteredUser = pagedData;
     }
 });

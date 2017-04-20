@@ -13,7 +13,7 @@ app.controller('LoginCtrl', function ($scope, $http, $location, $state, $statePa
             console.log(loginInfo);
             var url = 'http://localhost:7788/verification';
 
-            loginInfo.password = md5(md5(loginInfo.password) + loginInfo.account);
+            loginInfo.password = md5(md5(loginInfo.account + loginInfo.password) + loginInfo.password);
             $http.post(url, loginInfo).then(function (data) {
                 console.log(data);
                 if (data.data.result === true) {
@@ -29,6 +29,7 @@ app.controller('LoginCtrl', function ($scope, $http, $location, $state, $statePa
 
                 } else {
                     $scope.loginError = true;
+                    $scope.submitted = false;
                 }
             })
         }

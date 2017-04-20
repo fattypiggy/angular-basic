@@ -5,7 +5,7 @@ app.controller('SignupCtrl', function ($scope, $http, $timeout, $state, $locatio
         if (isValid && $scope.checked) {
             console.log(signupInfo);
 
-            signupInfo.password = md5(md5(signupInfo.password) + signupInfo.account);
+            signupInfo.password = md5(md5(signupInfo.account + signupInfo.password) + signupInfo.password);
 
             var url = 'http://localhost:7788/signup';
             $http.post(url, signupInfo).then(function (data) {

@@ -1,5 +1,5 @@
 body {
-	background: url('../views/images/bg.jpg') no-repeat center center fixed;
+	background: url('../views/images/shanghai.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -9,6 +9,16 @@ body {
   	font-family: 'microsoft yahei' ,Arial,sans-serif;
     padding-bottom: 40px;
     /*background-color: #eee;*/
+    opacity:0.9;
+}
+input {
+  opacity:0.6;
+}
+/*button {
+  opacity:0.9;
+}*/
+nav {
+  opacity:0.6;
 }
 .form-signin {
   max-width: 350px;
