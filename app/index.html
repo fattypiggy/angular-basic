@@ -28,10 +28,11 @@
                 <a class="navbar-brand" ui-sref="welcome">Welcome</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" ng-controller="WelcomeCtrl">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a ui-sref="signup">Sign up</a></li>
-                    <li><a ui-sref="login">Log in</a></li>
+                    <li ng-show="username==null"><a ui-sref="signup">Sign up</a></li>
+                    <li ng-show="username==null"><a ui-sref="login">Log in</a></li>
+                    <li ng-show="username!=null"><a ng-click="logout()" style="cursor:pointer">Log out</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
