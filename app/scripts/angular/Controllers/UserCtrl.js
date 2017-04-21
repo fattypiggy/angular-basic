@@ -4,11 +4,6 @@ app.controller('UserCtrl', function ($scope, $http, $timeout, $state, $location,
         $scope.itemsPerPage = 5;
         $scope.users = [];
         $scope.setPagingData(1);
-        // var getAllURL = 'http://localhost:7788/getAll?page='+($scope.currentPage-1)+"&size=5";
-        // $http.get(getAllURL).then(function (result) {
-        //     $scope.users = result.data;
-        //     //$scope.setPagingData($scope.currentPage);
-        // })
     }
 
     $scope.removeUser = function (user) {
@@ -19,17 +14,12 @@ app.controller('UserCtrl', function ($scope, $http, $timeout, $state, $location,
             $scope.init();
         })
     }
+
     $scope.setPagingData = function (page) {
         var getAllURL = 'http://localhost:8181/user/getAll?page=' + (page - 1) + "&size=5";
-        $http.get(getAllURL).then(function (result, status, headers, config) {
-                $scope.users = result.data;
-                console.log(result);
-                //$scope.setPagingData($scope.currentPage);
-            })
-            // var pagedData = $scope.users.slice(
-            //     (page - 1) * $scope.itemsPerPage,
-            //     page * $scope.itemsPerPage
-            // );
-            // $scope.filteredUser = pagedData;
+        $http.get(getAllURL).then(function (result) {
+            $scope.users = result.data;
+            $scope.totalItems = Number(result.headers('X-Pagination-Total-Items'));
+        })
     }
 });
