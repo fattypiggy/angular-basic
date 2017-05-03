@@ -1,4 +1,4 @@
-app.controller('UserCtrl', function ($scope, $http, $timeout, $state, $location, $cookies) {
+app.controller('UserCtrl',['$scope','$http','$timeout','$state','$location','$cookies', function ($scope, $http, $timeout, $state, $location, $cookies) {
     $scope.init = function () {
         $scope.currentPage = 1;
         $scope.itemsPerPage = 5;
@@ -18,8 +18,8 @@ app.controller('UserCtrl', function ($scope, $http, $timeout, $state, $location,
     $scope.setPagingData = function (page) {
         var getAllURL = 'http://localhost:8181/user/getAll?page=' + (page - 1) + "&size=5";
         $http.get(getAllURL).then(function (result) {
-            $scope.users = result.data;
+            $scope.users = result.data.data;
             $scope.totalItems = Number(result.headers('X-Pagination-Total-Items'));
         })
     }
-});
+}]);

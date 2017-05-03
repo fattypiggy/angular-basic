@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router', 'ngCookies', 'ui.bootstrap']);
+var app = angular.module('app', ['ui.router', 'ngCookies', 'ui.bootstrap', 'base64']);
 
 app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/');

@@ -1,4 +1,4 @@
-app.controller('WelcomeCtrl',function($scope, $rootScope, $state, $stateParams, $cookies){
+app.controller('WelcomeCtrl',['$scope','$rootScope','$state','$stateParams','$cookies', function($scope, $rootScope, $state, $stateParams, $cookies){
     $scope.init = function(){
         $rootScope.username = null;
 
@@ -14,4 +14,4 @@ app.controller('WelcomeCtrl',function($scope, $rootScope, $state, $stateParams, 
         $rootScope.username = null;
         $scope.init();
     }
-});
+}]);

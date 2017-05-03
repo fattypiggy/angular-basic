@@ -1,4 +1,4 @@
-app.controller('LoginCtrl', function ($scope, $http, $location, $state, $stateParams, $cookies) {
+app.controller('LoginCtrl',['$scope','$http','$location','$state','$stateParams','$cookies', function ($scope, $http, $location, $state, $stateParams, $cookies) {
 
     $scope.init = function () {
         $scope.loginInfo = {};
@@ -48,4 +48,4 @@ app.controller('LoginCtrl', function ($scope, $http, $location, $state, $statePa
         })
     };
 
-});
+}]);

@@ -1,4 +1,4 @@
-app.controller('SignupCtrl', function ($scope, $http, $timeout, $state, $location, $cookies) {
+app.controller('SignupCtrl',['$scope','$http','$timeout','$state','$location','$cookies', function ($scope, $http, $timeout, $state, $location, $cookies) {
 
     $scope.signup = function (isValid, signupInfo) {
         $scope.submitted = true;
@@ -41,7 +41,7 @@ app.controller('SignupCtrl', function ($scope, $http, $timeout, $state, $locatio
             $scope.time = $timeout(function () {
                 var url = 'http://localhost:7788/';
                 $http.get(url + account + '/verification').then(function (data) {
-                    if (data.data.msg === "valid") {
+                    if (data.data.msg === "success") {
                         $scope.isValidAccount = true;
                         console.log(data.data.msg);
                         $scope.checked = true;
@@ -54,4 +54,4 @@ app.controller('SignupCtrl', function ($scope, $http, $timeout, $state, $locatio
             }, 3000);
         }
     };
-});
+}]);
